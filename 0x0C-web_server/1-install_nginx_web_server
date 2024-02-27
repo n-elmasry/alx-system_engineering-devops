@@ -2,6 +2,6 @@
 #Install nginx on your web-01
 apt-get -y update
 apt-get -y install nginx
-sed -i 's/80 default_server/80/' /etc/nginx/sites-available/default
+sudo chown  $USER:$USER /var/www/html/index.html
 echo "Hello World!" > /var/www/html/index.html
 service nginx restart
