@@ -1,10 +1,7 @@
 #!/usr/bin/env bash
-
-# Ensure Nginx is installed (in case this script runs independently)
-sudo apt install nginx -y
-
-# Create the redirect rule in the Nginx configuration
-echo "rewrite ^/redirect_me$ http://google.com permanent;" | sudo tee -a /etc/nginx/sites-available/default
-
-# Reload Nginx to apply the changes
-sudo service nginx reload
+# redirection /redirect_me
+sudo apt-get update
+sudo apt-get -y install nginx
+echo 'Hello World!' > /var/www/html/index.html
+sed -i '/server_name _/a location /redirect_me { rewrite ^ https://www.youtube.com/watch?v=QH2-TGUlwu4 permanent; }' /etc/nginx/sites-available/default
+service nginx restart
