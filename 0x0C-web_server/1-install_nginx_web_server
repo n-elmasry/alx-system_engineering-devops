@@ -11,7 +11,9 @@
 
 # Restart Nginx
 #sudo service nginx restart
-apt-get -y update
-apt-get -y install nginx
-echo "Holberton School" > /var/www/html/index.html
-service nginx restart
+sudo apt-get update -y
+sudo apt-get upgrade -y
+sudo apt-get install nginx -y
+ufw allow 'Nginx HTTP'
+echo "Hello World!" > /var/www/html/index.html
+sudo service nginx start
