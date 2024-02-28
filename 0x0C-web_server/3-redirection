@@ -1,18 +1,10 @@
 #!/usr/bin/env bash
-#
-#!/usr/bin/env bash
-# Configure Nginx server so that /redirect_me is redirecting to another page
-# redirection must be a “301 Moved Permanently”
-#!/usr/bin/env bash
-# Install nginx web server
-if ! command -v nginx &> /dev/null
-then
-    sudo apt -y update
-    sudo apt install nginx -y
-    sudo ufw allow 'Nginx HTTP'
-    echo 'Hello World!' > /var/www/html/index.nginx-debian.html
-fi
 
-replacement="server_name _;\n\trewrite ^\/redirect_me https:\/\/www.google.com permanent;"
-sudo sed -i "s/server_name _;/$replacement/" /etc/nginx/sites-enabled/default
-sudo service nginx restart
+# Ensure Nginx is installed (in case this script runs independently)
+sudo apt install nginx -y
+
+# Create the redirect rule in the Nginx configuration
+echo "rewrite ^/redirect_me$ http://google.com permanent;" | sudo tee -a /etc/nginx/sites-available/default
+
+# Reload Nginx to apply the changes
+sudo service nginx reload
