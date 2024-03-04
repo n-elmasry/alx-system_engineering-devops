@@ -13,7 +13,7 @@ function install() {
 	fi
 }
 
-install nginx #install nginx
+install nginx
 
 
 sudo ufw allow 'Nginx HTTP'
