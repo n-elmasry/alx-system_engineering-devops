@@ -1,0 +1,6 @@
+#  install the ufw firewall and setup a few rules on web-01.
+sudo ufw default deny incoming   # Set default policy to deny incoming traffic
+sudo ufw allow 22/tcp            # Allow SSH
+sudo ufw allow 80/tcp            # Allow HTTP
+sudo ufw allow 443/tcp           # Allow HTTPS
+sudo ufw enable                  # Enable ufw
