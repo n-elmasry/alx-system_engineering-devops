@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""returns information about a given employee TODO list progress."""
+"""returns information about a given employee todo list progress."""
 import requests
 from sys import argv
 
@@ -10,7 +10,7 @@ user_url = f'https://jsonplaceholder.typicode.com/users/{id}'
 employee = requests.get(user_url).json()
 employee_name = employee.get('name')
 
-# Fetch employee TODO list
+# Fetch employee todo list
 todos_url = f'https://jsonplaceholder.typicode.com/todos?userId={id}'
 all_tasks = requests.get(todos_url).json()
 
