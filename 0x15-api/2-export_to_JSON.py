@@ -13,7 +13,7 @@ if __name__ == "__main__":
     # Fetch employee details
     user_url = f'https://jsonplaceholder.typicode.com/users/{id}'
     employee = requests.get(user_url).json()
-    employee_name = employee.get('name')
+    employee_name = employee.get('username')
 
     # Fetch employee todo list
     todos_url = f'https://jsonplaceholder.typicode.com/todos?userId={id}'
