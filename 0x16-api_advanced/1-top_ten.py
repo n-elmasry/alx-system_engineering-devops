@@ -20,4 +20,4 @@ def top_ten(subreddit):
         return
     posts = info.get("data").get("children")
     for post in posts:
-        print(child.get("data").get("title"))
+        print(post.get("data").get("title"))
