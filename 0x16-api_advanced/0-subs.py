@@ -5,12 +5,13 @@ import requests
 
 
 def number_of_subscribers(subreddit):
-    """initializate"""
-    if (type(subreddit) is not str):
-        return (0)
-    url_api = ("https://www.reddit.com/r/{}/about.json".format(subreddit))
-    headers = {'user-agent': 'safari:holberton/0.1.0'}
-    response = requests.get(url_api, headers=headers)
-    if response.status_code is not 200:
-        return (0)
-    return (response.json().get("data").get("subscribers"))
+    """returns the number of subscribers"""
+    url = 'https://www.reddit.com/r/{}/about/.json'.format(
+        subreddit)
+    info = requests.get(url,
+                        headers={"user-agent": "user"},
+                        allow_redirects=False).json()
+    if "data" not in info:
+        return 0
+    subscribers = info.get('data').get('subscribers')
+    return subscribers
