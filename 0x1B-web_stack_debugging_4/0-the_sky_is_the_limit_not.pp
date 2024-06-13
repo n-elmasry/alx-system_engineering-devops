@@ -1,11 +1,9 @@
 # fix our stack
 
-exec { 'debugging fix':
-  command => "sed -i 's|ULIMIT=\"-n 15\"|ULIMIT=\"-n 4096\"|' /etc/default/nginx",
-  path    => '/bin',
+exec { 'fix--for-nginx':
+  command => '/bin/sed -i \'s/ULIMIT="-n 15"/ULIMIT="-n 4096"/\' /etc/default/nginx',
 }
-
-service { 'nginx':
-  ensure  => running,
-  require => Exec['debugging fix'],
+# Restart Nginx
+exec { 'nginx-restart':
+  command => '/usr/sbin/service nginx restart',
 }
